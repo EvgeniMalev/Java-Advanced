@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        // define the length of the matrices
+        int[][] matrix1 = new int[3][3];
+        int[][] matrix2 = new int[3][3];
+        int[][] sumMatrix = new int[3][3];
+
+        Scanner scanner = new Scanner(System.in);
+
+        // read the elements of the matrix with two for cycles
+        System.out.println("The elements of the first matrix are:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix1[i][j] = scanner.nextInt();
+            }
+        }
+
+        // and for the second matrix
+        System.out.println("The elements of the second matrix are:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix2[i][j] = scanner.nextInt();
+            }
+        }
+
+        // Summing the matrices
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+
+        System.out.println("The sum of the matrices is:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(sumMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
