@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+      public class Matrixelements {
+          public static void main(String[] args) {
+              Scanner scanner = new Scanner(System.in);
+
+              System.out.println("Enter the matrix row and column");
+              // counter for the row and the column of the matrix
+              int rows = 0;
+              int columns = 0;
+
+              // while cycle and placing a word parameter to end the scan
+              while (scanner.hasNextLine()) {
+                  String line = scanner.nextLine();
+                  if (line.equalsIgnoreCase("end")) {
+                      break;
+                  }
+                  rows++;
+                  String[] elements = line.split("\\s+");
+                  columns = Math.max(columns, elements.length);
+              }       
+              System.out.println("Number of rows: " + rows);
+              System.out.println("Number of columns: " + columns);
+          }
+      }
