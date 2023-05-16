@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Summatrices {
     public static void main(String[] args) {
         
         // define the length of the matrices
