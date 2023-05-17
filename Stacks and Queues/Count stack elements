@@ -1,0 +1,29 @@
+// Count elements of a stack in java
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class CST {
+    public static void main(String[] args) {
+        
+        Stack<Integer> stack1 = new Stack<>();
+     System.out.println("Elements of Stack1:");
+     getInput(stack1);
+        System.out.println("Elements:" + stack1);
+        
+    }
+    
+    public static void getInput(Stack<Integer> stack) {
+        
+        int count = 0;
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            int element = Integer.parseInt(input);
+            stack.push(element);
+            count++;
+        }
+         System.out.println("Counter of the elements:" + count);
+    }
+        
+} 
