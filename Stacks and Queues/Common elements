@@ -1,0 +1,54 @@
+// Find common elements in two stacks 
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Commonelements {
+    public static void main(String[] args) {
+   
+   Stack<Integer> stack1 = new Stack<>();
+   Stack<Integer> stack2 = new Stack<>();
+   
+   System.out.println("Elements of Stack1:");
+   getInput(stack1);
+   
+   System.out.println("Elements of Stack2:");
+   getInput(stack2);
+   
+   Stack<Integer> CommonElements = findCommonElements(stack1, stack2);
+   
+   System.out.println("Common elements are:");
+     while(!CommonElements.isEmpty()) {
+   System.out.println(CommonElements.pop());
+   }
+   }   
+   
+    public static void getInput(Stack<Integer> stack) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            int element = Integer.parseInt(input);
+            stack.push(element);
+        }
+    }
+
+    public static Stack<Integer> findCommonElements(Stack<Integer> stack1, Stack<Integer> stack2) {
+        Stack<Integer> CommonElements = new Stack<>();
+        Stack<Integer> tempStack = new Stack<>();
+
+        // Copy stack1 to a temporary stack
+        tempStack.addAll(stack1);
+
+        // Iterate over the elements of stack2
+        while (!stack2.isEmpty()) {
+            int element = stack2.pop();
+
+            // Check if the element exists in the temporary stack
+            if (tempStack.contains(element)) {
+                CommonElements.push(element);
+            }
+        }
+
+        return CommonElements;
+    }
+}
