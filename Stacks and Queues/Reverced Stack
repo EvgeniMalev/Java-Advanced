@@ -1,0 +1,32 @@
+// Enter elements of a stack and print them in a reverce order
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class RevercedStack {
+    public static void main(String[] args) {
+        Stack<String> stack = new Stack<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter stack elements (type 'end' to stop):");
+
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("end")) {
+                break;
+            }
+            stack.push(input);
+        }
+
+        System.out.println("Original stack: " + stack);
+
+        System.out.println("Reversed stack:");
+
+        while (!stack.isEmpty()) {
+            String element = stack.pop();
+            System.out.println(element);
+        }
+
+        scanner.close();
+    }
+}
