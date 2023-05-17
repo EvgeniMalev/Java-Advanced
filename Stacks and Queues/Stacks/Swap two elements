@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        // Get input for the stack
+        System.out.println("Enter elements for the Stack (one element per line, enter 'q' to stop):");
+        getInput(stack);
+
+        // Swap the top two elements
+        swapTopTwoElements(stack);
+
+        // Display the modified stack
+        System.out.println("Modified Stack:");
+        System.out.println(stack);
+    }
+
+    public static void getInput(Stack<Integer> stack) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("q")) {
+            int element = Integer.parseInt(input);
+            stack.push(element);
+        }
+    }
+
+    public static void swapTopTwoElements(Stack<Integer> stack) {
+        if (stack.size() < 2) {
+            System.out.println("Insufficient elements in the stack to perform swap.");
+            return;
+        }
+
+        int top = stack.pop();
+        int secondTop = stack.pop();
+
+        stack.push(top);
+        stack.push(secondTop);
+    }
+}
