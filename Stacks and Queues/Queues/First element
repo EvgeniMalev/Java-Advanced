@@ -1,0 +1,28 @@
+// write an elements of e queue until "end" and print the first element of the queue
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Firstelement {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        // Get input for the queue
+        System.out.println("Enter elements for the Queue (one element per line, enter 'q' to stop):");
+        getInput(queue);
+
+        String front = queue.remove();
+        System.out.println("Removed element: " + front);
+
+    }
+
+    public static void getInput(Queue<String> queue) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            queue.add(input);
+        }
+    }
+       
+}
