@@ -1,0 +1,53 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Getlasttwo {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+
+        // Get input for the queue
+        System.out.println("Enter elements for the Queue (one element per line, enter 'q' to stop):");
+        getInput(queue);
+
+
+        // Get the last two elements
+        String lastElement = getLastElement(queue);
+        String secondLastElement = getSecondLastElement(queue);
+
+        // Display the last two elements
+        System.out.println("Last element: " + lastElement);
+        System.out.println("Second last element: " + secondLastElement);
+    }
+
+     public static void getInput(Queue<String> queue) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            queue.add(input);
+        }
+    }
+
+
+
+    public static <T> T getLastElement(Queue<T> queue) {
+        T lastElement = null;
+        for (T element : queue) {
+            lastElement = element;
+        }
+        return lastElement;
+    }
+
+    public static <T> T getSecondLastElement(Queue<T> queue) {
+        T lastElement = null;
+        T secondLastElement = null;
+        for (T element : queue) {
+            secondLastElement = lastElement;
+            lastElement = element;
+        }
+        return secondLastElement;
+    }
+    
+    
+}
