@@ -1,0 +1,41 @@
+// Find Top 3 biggest integers in a Stack and sum them
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Topthreeelements {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        int sum = 0;
+        System.out.print("Enter the number of elements to push: ");
+        int numElements = scanner.nextInt();
+
+        for (int i = 0; i < numElements; i++) {
+            System.out.print("Enter element " + (i + 1) + ": ");
+            int element = scanner.nextInt();
+            stack.push(element);
+        }
+
+        System.out.println("Stack elements: " + stack);
+
+        if (!stack.isEmpty()) {
+            System.out.println("Top three elements:");
+            int top1 = stack.get(stack.size() - 1);
+            int top2 = stack.get(stack.size() - 2);
+            int top3 = stack.get(stack.size() - 3);
+
+            sum = top1 + top2 + top3;
+             System.out.println("The sum of top 3 elements are:" + sum);
+        
+            System.out.println("1st element: " + top1);
+            System.out.println("2nd element: " + top2);
+            System.out.println("3rd element: " + top3);
+        } else {
+            System.out.println("The stack is empty.");
+        }
+        
+        scanner.close();
+    }
+}
