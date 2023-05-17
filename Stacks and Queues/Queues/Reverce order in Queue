@@ -1,0 +1,39 @@
+// Print in a reverce order a queue in Java. First you had to scan the elements
+// while the input line to equals "end" and later to Push elements from the queue to the stack
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        System.out.println("Enter elements for the Queue (one element per line, enter 'q' to stop):");
+        getInput(queue);
+
+        System.out.println("Elements in reverse order:");
+        printReverseOrder(queue);
+    }
+
+    public static void getInput(Queue<String> queue) {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("end")) {
+            queue.add(input);
+        }
+    }
+
+    public static void printReverseOrder(Queue<String> queue) {
+        Stack<String> stack = new Stack<>();
+        
+        while (!queue.isEmpty()) {
+            stack.push(queue.poll());
+        }
+
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+    }
+}
