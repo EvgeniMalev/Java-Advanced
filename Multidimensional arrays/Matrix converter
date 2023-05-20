@@ -1,0 +1,32 @@
+public class MatrixConverter {
+    public static void main(String[] args) {
+        // Define the matrix of doubles
+        double[][] matrix = {
+            {1.5, 2.3, 3.7},
+            {4.2, 5.1, 6.8},
+            {7.9, 8.4, 9.2}
+        };
+
+        // Get the dimensions of the matrix
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        // Create an array to store the converted integers
+        int[] array = new int[rows * cols];
+
+        // Convert the elements of the matrix to integers and store in the array
+        int index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                array[index] = (int) matrix[i][j];
+                index++;
+            }
+        }
+
+        // Print the converted array
+        System.out.println("Converted array:");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+}
