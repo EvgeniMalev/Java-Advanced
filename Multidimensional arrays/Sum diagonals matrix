@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Sumdiagonals {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Enter a dimensions of the matrix
+        System.out.print("Enter the size of the square matrix: ");
+        int size = scanner.nextInt();
+
+        int[][] matrix = new int[size][size];
+
+        System.out.println("Enter the matrix elements:");
+
+        // Read the matrix with twp for cycles
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        // define a integers for the sum and create a method to sum the diagonals
+        int sum = calculateDiagonalSum(matrix);
+
+        System.out.println("The sum of the diagonal elements is: " + sum);
+    }
+
+    public static int calculateDiagonalSum(int[][] matrix) {
+        int size = matrix.length;
+        int sum = 0;
+
+        for (int i = 0; i < size; i++) {
+            sum += matrix[i][i];
+        }
+
+        return sum;
+    }
+}
