@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Printmatrix {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int numrow = scanner.nextInt();
+        int numcol = scanner.nextInt();
+
+        int[][] matrix = new int[numrow][numcol];
+
+        for (int i = 0; i < numrow; i++) {
+            for (int j = 0; j < numcol; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        for (int i = 0; i < numrow; i++) {
+            for (int j = 0; j < numcol; j++) {
+                System.out.print("[" + matrix[i][j] + "]");
+            }
+            System.out.println();
+        }
+    }
+}
