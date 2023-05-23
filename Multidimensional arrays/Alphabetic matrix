@@ -1,0 +1,49 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Amatrix {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+         
+        // Create a 3x3 matrix
+        char[][] matrix = new char[3][3];
+
+        // Scan the matrix
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix[i][j] = scanner.next().charAt(0);
+            }
+        }
+
+        // Flatten the matrix into a 1D array for sorting
+        char[] flattenedArray = new char[9];
+        int index = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flattenedArray[index++] = matrix[i][j];
+            }
+        }
+
+        // Sort the flattened array in alphabetical order
+        Arrays.sort(flattenedArray);
+
+        // Populate the sorted letters back into the matrix
+        index = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix[i][j] = flattenedArray[index++];
+            }
+        }
+
+        // Print the matrix in alphabetical order
+        System.out.println("Matrix in Alphabetic Order:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
