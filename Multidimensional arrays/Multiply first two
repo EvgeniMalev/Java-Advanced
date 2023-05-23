@@ -16,7 +16,8 @@ public class MultiplyF2 {
 
         // Multiply the first two elements and store the result in the third element of each row
         for (int j = 0; j < 3; j++) {
-            matrix[j][2] = matrix[j][0] * matrix[j][1];
+            matrix[i][2] = matrix[i][0] * matrix[i][1]; // for multiply first two row elements
+            // matrix[2][j] = matrix[0][j] * matrix[1][j]; first two column elements
         }
 
         // Print the updated matrix
