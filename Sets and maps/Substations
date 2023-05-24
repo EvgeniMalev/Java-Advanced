@@ -1,0 +1,22 @@
+import java.util.LinkedHashMap;   
+public class Main {      
+    public static void main(String[] args)   
+    {   
+        // Creating an empty Linked Hash Map  
+        LinkedHashMap<Integer, String> substation = new LinkedHashMap<>();   
+        // Adding data to Linked Hash Map in key-value pair    
+        substation.put(101, "Sever");   
+        substation.put(102, "Zapad");   
+        substation.put(103, "Zayn");  
+        substation.put(104, "Cherven flag");  
+        substation.put(105, "Sirena");  
+        // Showing size and data of the Linked Hash Map  
+        System.out.println("The size of the Linked Hash Map is:- "+ substation.size());   
+        System.out.println(substation);     
+        // Checking whether a certaint key is available or not  
+        if (substation.containsKey(105)) {   
+            String name = substation.get(105);   
+            System.out.println("The power system which contains cable is 105 is:- " + name);   
+        }   
+    }   
+}  
