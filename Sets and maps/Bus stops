@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Busstops {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Set<String>> busLines = new HashMap<>();
+
+        System.out.println("Enter bus lines and stops (format: line stop1 stop2 ...):");
+        System.out.println("Pleace enter blank row for end the program");
+        
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.isEmpty()) {
+                break;
+            }
+
+            String[] parts = input.split(" ");
+            String busLine = parts[0];
+            Set<String> busStops = new HashSet<>(Arrays.asList(parts).subList(1, parts.length));
+
+            busLines.put(busLine, busStops);
+        }
+
+        System.out.println("Bus lines and stops:");
+        for (Map.Entry<String, Set<String>> entry : busLines.entrySet()) {
+            String busLine = entry.getKey();
+            Set<String> busStops = entry.getValue();
+
+            System.out.println("Bus Line " + busLine + ":");
+            for (String stop : busStops) {
+                System.out.println(stop);
+            }
+            System.out.println();
+        }
+    }
+}
