@@ -1,0 +1,53 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public class UniversityLab {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        LinkedHashMap<String, LinkedHashMap<Integer, List<String>>> UniversityData = new LinkedHashMap<>();
+        // Enter a number of the records which You will add to the List
+        int rowCount = Integer.parseInt(reader.readLine());
+
+        // In Each new row pleace write 1.Name of the University 2.Hall 3.Lector
+        for (int i = 0; i < rowCount; i++) {
+            String[] parts = reader.readLine().split(" ");
+            String University = parts[0];
+            Integer Laboratory = Integer.parseInt(parts[1]);
+            String Scientist = parts[2];
+
+            if (UniversityData.containsKey(University)) {
+                LinkedHashMap<Integer, List<String>> LaboratoryData = UniversityData.get(University);
+                if (LaboratoryData.containsKey(Laboratory)) {
+                    List<String> Scientists = LaboratoryData.get(Laboratory);
+                    Scientists.add(Scientist); // Use Scientists instead of Labs
+                    LaboratoryData.put(Laboratory, Scientists);
+                } else {
+                    List<String> Labs = new ArrayList<>();
+                    Labs.add(Scientist);
+                    LaboratoryData.put(Laboratory, Labs); // Use Labs instead of Scientist
+                }
+                UniversityData.put(University, LaboratoryData);
+            } else {
+                LinkedHashMap<Integer, List<String>> LaboratoryData = new LinkedHashMap<>();
+                List<String> Scientists = new ArrayList<>();
+                Scientists.add(Scientist);
+                LaboratoryData.put(Laboratory, Scientists);
+                UniversityData.put(University, LaboratoryData);
+            }
+        }
+
+        for (String UniversityName : UniversityData.keySet()) {
+            System.out.println(UniversityName + ":");
+            LinkedHashMap<Integer, List<String>> LaboratoryData = UniversityData.get(UniversityName);
+            for (Integer Laboratory : LaboratoryData.keySet()) {
+                System.out.print(Laboratory + " -> ");
+                System.out.println(String.join(", ", LaboratoryData.get(Laboratory)));
+            }
+        }
+    }
+}
