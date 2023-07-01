@@ -1,0 +1,43 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class FileComparator {
+    public static void main(String[] args) {
+        // Choose a directoryq where You can select files
+        File directory = new File("C:\\'Programing\'Softuni\Fundamentals");
+        File[] files = directory.listFiles();
+
+        // compare long chars with countCharacters method
+        Arrays.sort(files, new Comparator<File>() {
+            public int compare(File f1, File f2) {
+                long f1Chars = countCharacters(f1);
+                long f2Chars = countCharacters(f2);
+                long f3Chars = countCharacters(new File("C:\\Fundamentals\\file3.txt"));
+
+                if (f1Chars == f2Chars && f2Chars == f3Chars) {
+                    return 0;
+                } else if (f1Chars < f2Chars && f2Chars < f3Chars) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+        });
+
+        for (File file : files) {
+            System.out.println(file.getName());
+        }
+    }
+
+    private static long countCharacters(File file) {
+        try {
+            return Files.readString(file.toPath()).length();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+}
