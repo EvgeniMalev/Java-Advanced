@@ -1,0 +1,79 @@
+import java.util.*;
+
+public class NumbersCollection {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int m = Integer.parseInt(scanner.nextLine()); // Number of rows
+        int n = Integer.parseInt(scanner.nextLine()); // Number of columns
+
+        char[][] matrix = new char[m + 2][n + 2];
+        for (int i = 0; i < m + 2; i++) {
+            for (int j = 0; j < n + 2; j++) {
+                if (i == 0 || i == m + 1 || j == 0 || j == n + 1) {
+                    matrix[i][j] = 'E'; // Filling borders with 'E'
+                } else {
+                    matrix[i][j] = '.';
+                }
+            }
+        }
+
+        int playerRow = -1;
+        int playerCol = -1;
+
+        for (int i = 1; i <= m; i++) {
+            char[] arr = scanner.nextLine().toCharArray();
+            for (int j = 1; j <= n; j++) {
+                matrix[i][j] = arr[j - 1];
+                if (matrix[i][j] == 'P') {
+                    playerRow = i;
+                    playerCol = j;
+                }
+            }
+        }
+
+        int sumNumbers = 0;
+        String command = scanner.nextLine();
+
+        while (true) {
+            matrix[playerRow][playerCol] = '-';
+
+            int nextRow = playerRow;
+            int nextCol = playerCol;
+
+            if (command.equals("up")) {
+                nextRow--;
+            } else if (command.equals("down")) {
+                nextRow++;
+            } else if (command.equals("left")) {
+                nextCol--;
+            } else if (command.equals("right")) {
+                nextCol++;
+            }
+
+            char nextPos = matrix[nextRow][nextCol];
+
+            if (nextPos == 'E') {
+                System.out.printf("You finish the game with %d points.\n", sumNumbers);
+                break;
+            } else if (nextPos == 'X') {
+                System.out.println("End of the game");
+                break;
+            } else if (Character.isDigit(nextPos)) {
+                int number = Character.getNumericValue(nextPos);
+                sumNumbers += number;
+            }
+
+            playerRow = nextRow;
+            playerCol = nextCol;
+
+            command = scanner.nextLine();
+        }
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.print(matrix[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
