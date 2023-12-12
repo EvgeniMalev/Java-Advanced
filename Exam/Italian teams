@@ -1,0 +1,74 @@
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class Italianteams {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] words = new String[]{"milan", "inter", "roma", "juventus"};
+        String[] foundWords = new String[]{"*****", "*****", "****", "********"};
+        String[] years = new String[]{"1899", "1908", "1898", "1927"};
+        String[] foundYears = new String[]{"****", "****", "****", "****"};
+        
+        // Input for vowels, consonants, odd, and even characters
+        System.out.println("Enter vowels:");
+        ArrayDeque<Character> vowels = new ArrayDeque<>(Arrays.asList(scanner.nextLine().replaceAll("\\s+", "").chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
+        
+        System.out.println("Enter consonants:");
+        ArrayDeque<Character> consonants = new ArrayDeque<>(Arrays.asList(scanner.nextLine().replaceAll("\\s+", "").chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
+        
+        System.out.println("Enter odd characters:");
+        ArrayDeque<Character> odd = new ArrayDeque<>(Arrays.asList(scanner.nextLine().replaceAll("\\s+", "").chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
+        
+        System.out.println("Enter even characters:");
+        ArrayDeque<Character> even = new ArrayDeque<>(Arrays.asList(scanner.nextLine().replaceAll("\\s+", "").chars().mapToObj(c -> (char) c).toArray(Character[]::new)));
+
+        while (!consonants.isEmpty() && !vowels.isEmpty()) {
+            char vowel = vowels.poll();
+            char consonant = consonants.poll();
+
+            for (int i = 0; i < words.length; i++) {
+                String word = words[i];
+                int indexVowel = word.indexOf(vowel);
+                int indexConsonant = word.indexOf(consonant);
+
+                if (indexVowel >= 0) {
+                    foundWords[i] = foundWords[i].substring(0, indexVowel) + vowel + foundWords[i].substring(indexVowel + 1);
+                }
+                if (indexConsonant >= 0) {
+                    foundWords[i] = foundWords[i].substring(0, indexConsonant) + consonant + foundWords[i].substring(indexConsonant + 1);
+                }
+            }
+        }
+
+        while (!odd.isEmpty() && !even.isEmpty()) {
+            char oddChar = odd.poll();
+            char evenChar = even.poll();
+
+            for (int i = 0; i < years.length; i++) {
+                String year = years[i];
+                int indexOdd = year.indexOf(oddChar);
+                int indexEven = year.indexOf(evenChar);
+
+                if (indexOdd >= 0) {
+                    foundYears[i] = foundYears[i].substring(0, indexOdd) + oddChar + foundYears[i].substring(indexOdd + 1);
+                }
+                if (indexEven >= 0) {
+                    foundYears[i] = foundYears[i].substring(0, indexEven) + evenChar + foundYears[i].substring(indexEven + 1);
+                }
+            }
+        }
+
+        List<String> output = Arrays.stream(foundWords).filter(w -> !w.contains("*")).collect(Collectors.toList());
+        List<String> output1 = Arrays.stream(foundYears).filter(w -> !w.contains("*")).collect(Collectors.toList());
+
+        System.out.printf("Words found: %d%n", output.size());
+        output.forEach(System.out::println);
+
+        System.out.printf("Years found: %d%n", output1.size());
+        output1.forEach(System.out::println);
+    }
+}
