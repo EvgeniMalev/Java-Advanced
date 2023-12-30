@@ -1,0 +1,38 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Demo {
+    public static void main(String args[]) {
+        
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5); 
+
+        List<Integer> cubic = numbers.stream()
+            .map(x -> x * x * x) // Cube each number
+            .collect(Collectors.toList());
+
+        System.out.println(cubic);
+
+        List<String> names = Arrays.asList(
+            "dobar", "smel", "golyam");
+
+        List<String> result
+          = names.stream()
+            .filter(s -> s.startsWith("nay - ") && s.endsWith(";")) // Filter strings
+            .collect(Collectors.toList());
+
+        System.out.println(result); // This will print an empty list as no string meets the criteria
+
+        List<String> show 
+          = names.stream()
+            .sorted()
+            .collect(Collectors.toList());
+
+        System.out.println(show);
+
+        int even = numbers.stream()
+            .filter(x -> x % 2 == 0)
+            .reduce(0, Integer::sum); // Use Integer::sum for better readability
+
+        System.out.println(even);
+    }
+}
