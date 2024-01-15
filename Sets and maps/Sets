@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String args[]) {
+
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        Set<Character> consonants = new HashSet<>(Arrays.asList('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'));
+
+        Set<Character> union = new HashSet<>(vowels);
+        union.addAll(consonants);
+        System.out.print("Union of the two sets (Vowels and Consonants): ");
+        System.out.println(union);
+
+        Set<Character> intersection = new HashSet<>(vowels);
+        intersection.retainAll(consonants);
+        System.out.print("Intersection of the two sets (Vowels and Consonants): ");
+        System.out.println(intersection);
+
+        Set<Character> difference = new HashSet<>(vowels);
+        difference.removeAll(consonants);
+        System.out.print("Difference of the two sets (Vowels - Consonants): ");
+        System.out.println(difference);
+    }
+}
