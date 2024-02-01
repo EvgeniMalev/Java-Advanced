@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class Main {
+    
+    public static void main(String[] args) { 
+
+    Set<String> hash_Set = new HashSet<String>(); 
+  
+        hash_Set.add("Alfa"); 
+        hash_Set.add("Lancia"); 
+        hash_Set.add("Detomaso"); 
+        hash_Set.add("Ypsilon"); 
+        hash_Set.add("Fiat"); 
+        hash_Set.add("Ferrari"); 
+
+    
+        Set<String> tree_Set = new TreeSet<String>();
+        
+
+        for (String str : hash_Set) {
+            tree_Set.add(str);
+        }
+        
+        System.out.println("Strings in alphabetical order:");
+        for (String str : tree_Set) {
+            System.out.println(str);
+        }
+    } 
+}
