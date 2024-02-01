@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main {
+    
+    public static void main(String[] args) { 
+       
+        Set<Double> hash_Set = new HashSet<Double>(); 
+  
+        
+        hash_Set.add(35.5); 
+        hash_Set.add(5.0);  
+        hash_Set.add(21.2); 
+        hash_Set.add(6.2); 
+        hash_Set.add(25.0); 
+
+        Set<Double> tree_Set = new TreeSet<Double>(hash_Set);
+        
+        System.out.println("Doubles in ascending order:");
+        for (double num : tree_Set) {
+            System.out.println(num);
+        }
+    } 
+}
